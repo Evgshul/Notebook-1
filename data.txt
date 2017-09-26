@@ -2,3 +2,4 @@ cp John Smith xyz john@smi.th 12345678 11223344
 cp Mike Dave qwerty mike@jmail.com 00998877 3434343 234234
 cr "Buy sausage" "2017-09-31 17:00"
 cn "To be or not to be?"
+ca "Wake up!" 7:00

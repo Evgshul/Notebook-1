@@ -43,6 +43,15 @@ public class Notebook implements ShellDependent {
     }
 
     @Command
+    public void createAlarm(@Param(name = "text") String text,
+                            @Param(name = "time") String time) {
+        Alarm r = new Alarm();
+        r.setText(text);
+        r.setTime(time);
+        records.add(r);
+    }
+
+    @Command
     public void remove(@Param(name = "id") int id) {
         for (int i = 0; i < records.size(); i++) {
             Record r = records.get(i);

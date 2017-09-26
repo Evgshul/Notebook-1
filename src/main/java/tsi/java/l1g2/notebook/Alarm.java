@@ -3,7 +3,7 @@ package tsi.java.l1g2.notebook;
 import asg.cliche.Command;
 import asg.cliche.Param;
 
-public class Reminder extends Note implements Expirable {
+public class Alarm extends Note implements Expirable {
     private String time;
 
     @Command
@@ -29,7 +29,7 @@ public class Reminder extends Note implements Expirable {
 
     @Override
     public String toString() {
-        return "Reminder{" +
+        return "Alarm{" +
                 "id=" + getId() +
                 ", text='" + getText() + '\'' +
                 ", time='" + time + '\'' +
