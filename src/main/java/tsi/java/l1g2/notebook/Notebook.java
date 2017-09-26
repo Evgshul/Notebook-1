@@ -5,6 +5,7 @@ import asg.cliche.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Notebook implements ShellDependent {
     private final List<Record> records = new ArrayList<>();
@@ -54,8 +55,7 @@ public class Notebook implements ShellDependent {
 
     @Command
     public void edit(@Param(name = "id") int id) throws IOException {
-        for (int i = 0; i < records.size(); i++) {
-            Record r = records.get(i);
+        for (Record r : records) {
             if (r.getId() == id) {
                 Shell shell = ShellFactory.createSubshell("#" + id, parentShell,
                         "editing\n\t" + r.toString() + "\ntype 'exit' to return to main menu", r);
@@ -70,6 +70,12 @@ public class Notebook implements ShellDependent {
         return records;
     }
 
+    @Command
+    public List<Record> find(String str) {
+        return records.stream()
+                .filter(r -> r.contains(str))
+                .collect(Collectors.toList());
+    }
 
     // need for cliche to allow subshells
     @Override

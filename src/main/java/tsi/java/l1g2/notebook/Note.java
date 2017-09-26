@@ -1,7 +1,6 @@
 package tsi.java.l1g2.notebook;
 
 import asg.cliche.Command;
-import asg.cliche.Param;
 
 public class Note extends Record {
     private String text;
@@ -12,7 +11,7 @@ public class Note extends Record {
     }
 
     @Command
-    public void setText( String text) {
+    public void setText(String text) {
         this.text = text;
     }
 
@@ -23,4 +22,12 @@ public class Note extends Record {
                 ", text='" + text + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean contains(String str) {
+        String textLow = text.toLowerCase();
+        String strLow = str.toLowerCase();
+        return textLow.contains(strLow);
+    }
+
 }

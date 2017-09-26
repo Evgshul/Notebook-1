@@ -53,6 +53,17 @@ public class Person extends Note {
         this.email = email;
     }
 
+
+    @Override
+    public boolean contains(String str) {
+        String strLow = str.toLowerCase();
+        return super.contains(strLow)
+                || firstName.toLowerCase().contains(strLow)
+                || lastName.toLowerCase().contains(strLow)
+                || email.toLowerCase().contains(strLow)
+                || phones.stream().anyMatch(p -> p.toLowerCase().contains(strLow));
+    }
+
     @Override
     public String toString() {
         return "Person{" +
