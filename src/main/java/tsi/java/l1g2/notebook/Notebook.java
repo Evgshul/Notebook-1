@@ -13,13 +13,15 @@ public class Notebook implements ShellDependent {
     @Command
     public void createPerson(@Param(name = "first name") String firstName,
                              @Param(name = "last name") String lastName,
+                             @Param(name = "note") String note,
                              @Param(name = "email") String email,
                              @Param(name = "phones") String... phones) {
         Person r = new Person();
         r.setFirstName(firstName);
         r.setLastName(lastName);
-        r.addPhones(phones);
+        r.setText(note);
         r.setEmail(email);
+        r.addPhones(phones);
         records.add(r);
     }
 

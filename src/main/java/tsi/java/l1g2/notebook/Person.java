@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Person extends Record {
+public class Person extends Note {
     private String firstName;
     private String lastName;
     private String email;
@@ -59,6 +59,7 @@ public class Person extends Record {
                 "id=" + getId() +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", note='" + getText() + '\'' +
                 ", email='" + email + '\'' +
                 ", phones=" + phones +
                 '}';
