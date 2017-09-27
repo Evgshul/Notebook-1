@@ -38,7 +38,7 @@ public class Notebook implements ShellDependent {
                                @Param(name = "time") String time) {
         Reminder r = new Reminder();
         r.setText(text);
-        r.setTime(time);
+        r.setTimeAsString(time);
         records.add(r);
     }
 
@@ -84,6 +84,20 @@ public class Notebook implements ShellDependent {
         return records.stream()
                 .filter(r -> r.contains(str))
                 .collect(Collectors.toList());
+    }
+
+    @Command
+    public List<Record> listExpired() {
+        List<Record> result = new ArrayList<>();
+        for (Record r: records) {
+            if (r instanceof Expirable) {
+                Expirable e = (Expirable) r;
+                if (e.isExpired()) {
+                    result.add(r);
+                }
+            }
+        }
+        return result;
     }
 
     // need for cliche to allow subshells
